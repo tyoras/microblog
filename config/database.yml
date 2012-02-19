@@ -1,11 +1,11 @@
 development:
   encoding: unicode
   adapter: postgresql
-  username: xsoymydqmo
-  port: 5432
-  host: ec2-23-21-197-235.compute-1.amazonaws.com
-  database: xsoymydqmo
-  password: rKlfEF-9aIJTOMDXdBSs
+  username: yoan
+  port: 5433
+  host: localhost
+  database: yoan
+  password: yoalva28
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -13,11 +13,11 @@ development:
 test:
   encoding: unicode
   adapter: postgresql
-  username: xsoymydqmo
-  port: 5432
-  host: ec2-23-21-197-235.compute-1.amazonaws.com
-  database: xsoymydqmo
-  password: rKlfEF-9aIJTOMDXdBSs
+  username: yoan
+  port: 5433
+  host: localhost
+  database: yoan
+  password: yoalva28
 
 production:
   encoding: unicode
