@@ -10,4 +10,9 @@ module ApplicationHelper
     end
   end
 
+  # Retourne le logo de l'application
+  def logo
+   image_tag("logo.png", :alt => "Marmotte Blog", :class => "round")
+  end
+
 end
