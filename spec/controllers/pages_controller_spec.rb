@@ -17,7 +17,7 @@ describe PagesController do
   	  get 'home'
   	  response.should have_selector("title",
   	  															:content => @base_title + " | Accueil")
-	end
+		end
   end
 
   describe "GET 'contact'" do
@@ -30,7 +30,7 @@ describe PagesController do
   	  get 'contact'
   	  response.should have_selector("title",
   	  															:content => @base_title + " | Contact")
-	end
+		end
   end
 
   describe "GET 'about'" do
@@ -43,7 +43,7 @@ describe PagesController do
   	  get 'about'
   	  response.should have_selector("title",
   	  															:content => @base_title + " | A Propos")
-	end
+		end
   end
 
   describe "GET 'help'" do
