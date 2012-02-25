@@ -4,11 +4,11 @@ class PagesController < ApplicationController
   end
 
   def contact
-  	@titre = "Contactez"
+  	@titre = "Contact"
   end
 
   def about
-  	@titre = "A propos"
+  	@titre = "A Propos"
   end
 
   def help
