@@ -1,12 +1,12 @@
 module ApplicationHelper
 
   # Retourner un titre basé sur la page.
-  def titre
+  def titre(titre_page)
     base_titre = "Marmotte Blog"
-    if @titre.nil?
+    if titre_page.nil?
       base_titre
     else
-      "#{base_titre} | #{@titre}"
+      "#{base_titre} | #{titre_page}"
     end
   end
 

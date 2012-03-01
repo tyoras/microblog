@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= titre %></title>
-    <%= csrf_meta_tag %>
+    <title><%= titre(yield(:title)) %></title>
     <%= render 'layouts/stylesheets' %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
   </head>
   <body>
     <div class="container">
