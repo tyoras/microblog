@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
   #Authentifie et met en place la session
   def create
     #on cherche l'utilisateur par email
-  	user = User.find_by_email(params[:session][:email])
+  	user = User.find_by_email(params[:email])
     #si on le trouve et qu'il a le bon mot de passe
-    if user && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:password])
       #on créer la session
       sign_in user
       #puis on va sur le profil
