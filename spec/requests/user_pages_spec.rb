@@ -1,3 +1,4 @@
+#encoding: utf-8
 require 'spec_helper'
 
 describe "User pages" do
@@ -47,6 +48,7 @@ describe "User pages" do
 
         it { should have_selector('title', text: user.name) }
         it { should have_selector('div.flash.success', text: 'Bienvenue') }
+        it { should have_link('Se déconnecter') }
       end
     end
 

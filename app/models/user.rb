@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   #Utilise auttomatiquement le champs password_digest en base
   has_secure_password
+  #appel à un callback qui execute une méthode avant d'executer save
+  before_save :create_remember_token
   #décrit la validation des champs
   validates :name, presence: true, length: { maximum: 50 }
   valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -22,4 +24,12 @@ class User < ActiveRecord::Base
   									format: 		{ with: valid_email_regex },
 										uniqueness: { case_sensitive: false }
 	validates :password, length: { minimum: 6 }
+
+  #définit les attributs et méthodes privées
+  private
+
+    #Génère un id de session aléatoirement
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 end
