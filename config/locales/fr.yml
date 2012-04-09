@@ -3,3 +3,31 @@ fr:
     attributes:
       user:
         password_digest: "Mot de passe"
+        password: "Mot de passe"
+        name: "Nom"
+  errors:
+      messages:
+        taken: "a déjà été pris"
+        blank: "non renseigné"
+        invalid: "invalide"
+        too_short: "trop court"
+        confirmation: " ne correspond pas à la confirmation"
+        record_invalid: "Validation en echec: %{errors}"
+        restrict_dependent_destroy:
+          one: "Impossible d'effacer la donnée car une donnée dépendante %{record} existe"
+          many: "Impossible d'effacer la donnée car des données dépendantes %{record} existent"
+
+  will_paginate:
+    next_label: "Suivant &#8594;"
+    page_entries_info:
+      multi_page: ! '%{model} %{from} - %{to} sur %{count} au total'
+      multi_page_html: ! '%{model} <strong>%{from} - %{to}</strong> sur <strong>%{count}</strong>
+        au total'
+      single_page:
+        one: ! '%{count} %{model} affiché(e)'
+        other: ! '%{count} %{model} affiché(e)s'
+      single_page_html:
+        one: ! '%{count} %{model} affiché(e)'
+        other: ! '%{count} %{model} affiché(e)s'
+    page_gap: ! '&hellip;'
+    previous_label: "&#8592; Précédent"

@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 
+  #action d'accès à la page de connexion d'user
 	def new
   end
 
@@ -11,8 +12,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       #on créer la session
       sign_in user
-      #puis on va sur le profil
-      redirect_to user
+      #puis on va sur la page demandée avant la connexion s'il y en a une, sinon sur le profil
+      redirect_back_or user
     else
       #si authentification ratée => message d'erreur
       flash.now[:error] = 'Combinaison Email / Mot de passe invalide !' # Not quite right!

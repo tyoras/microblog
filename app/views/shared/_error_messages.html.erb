@@ -1,8 +1,16 @@
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "erreur") %> 
-        ont empêché l'inscription de l'utilisateur:</h2>
-    <p>Il y a des problèmes avec les champs suivants:</p>
+      <% if @user.errors.count == 1 %>
+        a
+      <% else %>
+        ont
+      <% end %> empêché la sauvegarde des données de l'utilisateur:</h2>
+    <% if @user.errors.count == 1 %>
+      <p>Il y a un problème avec le champ suivant:</p>
+    <% else %>
+      <p>Il y a des problèmes avec les champs suivants:</p>
+    <% end %>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

@@ -23,10 +23,26 @@ module SessionsHelper
     @current_user ||= user_from_remember_token
   end
 
+  #teste si un user est celui qui est connecté
+  def current_user?(user)
+    user == current_user
+  end
+
   #Déconnexion : détruit le cookie de session
   def sign_out
     current_user = nil
     cookies.delete(:remember_token)
+  end
+
+  #redirige vers une adresse qui a été précedement enregistrée dans la session 
+  def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    clear_return_to
+  end
+
+  #enregistre dans la session l'adresse demandée
+  def store_location
+    session[:return_to] = request.fullpath
   end
 
   private
@@ -35,5 +51,10 @@ module SessionsHelper
     def user_from_remember_token
       remember_token = cookies[:remember_token]
       User.find_by_remember_token(remember_token) unless remember_token.nil?
+    end
+
+    #vide l'adresse enregistrée dans la session
+    def clear_return_to
+      session.delete(:return_to)
     end
 end
