@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
+  before_filter :user_connected, only: [:new, :create]
 
   #action d'affichage d'un user existant
 	def show
@@ -63,6 +64,11 @@ class UsersController < ApplicationController
       end
     end
 
+    #redirection vers la page d'accueil si user connecté
+    def user_connected
+     redirect_to(root_path) if signed_in?
+    end
+
     #redirection vers l'accueil si ce n'est pas le bon user qui est connecté
     def correct_user
       @user = User.find(params[:id])
@@ -71,6 +77,6 @@ class UsersController < ApplicationController
 
     #empêche les users non admin d'effectuer une action en les redirigeant sur l'accueil
     def admin_user
-      redirect_to(root_path) unless current_user.admin?
+      redirect_to(root_path) unless (current_user.admin? && !current_user?(@user))
     end
 end
