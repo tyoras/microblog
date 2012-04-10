@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   #Utilise auttomatiquement le champs password_digest en base
   has_secure_password
+  #lien d'association avec 0 ou plusieurs microposts
+  has_many :microposts, dependent: :destroy
   #appel à un callback qui execute une méthode avant d'executer save
   before_save :create_remember_token
   #décrit la validation des champs

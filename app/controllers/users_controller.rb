@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   #action d'affichage d'un user existant
 	def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   #action d'affichage de la liste de tout les users

@@ -40,4 +40,6 @@ Microblog::Application.configure do
   silence_warnings do
     BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
   end
+
+  config.i18n.available_locales = :fr
 end

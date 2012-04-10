@@ -11,6 +11,9 @@ gem 'bcrypt-ruby'
 gem 'faker', '1.0.1'
 #pour la pagination
 gem 'will_paginate', '3.0.3'
+#pour la traduction
+gem 'rails-i18n'
+gem 'will-paginate-i18n'
 
 # Gems used only for assets and not required
 # in production environments by default.
