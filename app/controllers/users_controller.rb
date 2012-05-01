@@ -57,13 +57,6 @@ class UsersController < ApplicationController
   end
 
   private
-    #redirection vers la page de connexion pour les users non connectés 
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_path, notice: "Veuillez vous connecter pour accéder à cette page."
-      end
-    end
 
     #redirection vers la page d'accueil si user connecté
     def user_connected

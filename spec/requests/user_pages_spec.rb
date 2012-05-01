@@ -141,7 +141,7 @@ describe "User pages" do
     end
 
     describe "with invalid information" do
-      let(:error) { '1 erreur a empêché la sauvegarde des données de l\'utilisateur:' }
+      let(:error) { '1 erreur ' }
       before { click_button "Mettre à jour" }
 
       it { should have_content(error) }

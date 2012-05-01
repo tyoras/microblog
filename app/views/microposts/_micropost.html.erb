@@ -5,4 +5,11 @@
       Posté il y a <%= time_ago_in_words(micropost.created_at) %>.
     </span>
   </td>
+  <% if current_user?(micropost.user) %>
+    <td>
+      <%= link_to "Supprimer", micropost, method: :delete,
+                                       confirm: "Êtes vous sûr?",
+                                       title: micropost.content %>
+    </td>
+  <% end %>
 </tr>

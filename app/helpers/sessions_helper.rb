@@ -1,3 +1,4 @@
+#encoding: utf-8
 #Module copartagé entre les vues et controlleurs pour gérer la session
 module SessionsHelper
 	#Connexion : enregistre le token de session de l'utilisateur courant dans un cookie
@@ -11,6 +12,14 @@ module SessionsHelper
 	#Indique si le user est connecté
  	def signed_in?
     !current_user.nil?
+  end
+
+  #redirection vers la page de connexion pour les users non connectés 
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_path, notice: "Veuillez vous connecter pour accéder à cette page."
+    end
   end
 
 	#méthode d'assignation à une variable d'instance
