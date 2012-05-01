@@ -1,22 +1,6 @@
 <% provide(:title, 'Accueil') %>
 <% if signed_in? %>
-  <table class="front">
-    <tr>
-      <td class="main">
-        <h1 class="micropost">Quoi de neuf?</h1>
-        <%= render 'shared/micropost_form' %>
-        <%= render 'shared/feed' %>
-      </td>
-      <td class="sidebar round">
-        <%= render 'shared/user_info' %>
-      </td>
-    </tr>
-  </table>
+  <%= render 'pages/home_connected' %>
 <% else %>
-	<h1>Marmotte Blog</h1>
-	<p>
-	  Ceci est la page d'accueil du blog basé sur ce
-	  <a href="http://railstutorial.org/">tutoriel</a>.
-	</p>
-	<%= link_to "S'inscrire !", signup_path, :class => "signup_button round" %>
+	<%= render 'pages/home_not_connected' %>
 <% end %>
