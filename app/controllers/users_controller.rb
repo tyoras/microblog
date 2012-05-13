@@ -1,7 +1,7 @@
 #encoding: utf-8
 class UsersController < ApplicationController
   #callback avant d'excuter une action du controller
-  before_filter :signed_in_user, only: [:index, :edit, :update]
+  before_filter :signed_in_user, only: [:index, :edit, :update, :following, :followers]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
   before_filter :user_connected, only: [:new, :create]
@@ -55,6 +55,25 @@ class UsersController < ApplicationController
     flash[:success] = "Utilisateur supprimé."
     redirect_to users_path
   end
+
+  #action d'accès à la page d'affichage des gens suivis par l'utilisateur connecté
+  def following
+    @title = "Following"
+    @info = "Les personnes que vous suivez"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  #action d'accès à la page d'affichage des gens qui suivent l'utilisateur connecté
+  def followers
+    @title = "Followers"
+    @info = "Les personnes qui vous suivent"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
 
   private
 
